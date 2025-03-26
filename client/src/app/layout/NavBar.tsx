@@ -1,8 +1,12 @@
 import { Group } from '@mui/icons-material'
-import { Box, AppBar, Toolbar,  Typography, Button, Container, MenuItem, CssBaseline } from '@mui/material'
+import { Box, AppBar, Toolbar,  Typography, Button, MenuItem } from '@mui/material'
+
+type Props = {
+    openForm: () => void;
+}
 
 
-export default function NavBar() {
+export default function NavBar({openForm}: Props) {
     return (
         
         <Box sx={{ flexGrow: 1 }}>
@@ -74,7 +78,9 @@ export default function NavBar() {
                         backgroundColor: '#ff3b30',
                         boxShadow: '0px 6px 18px rgba(0, 0, 0, 0.3)'
                     }
-                }}>
+                }}
+                onClick={openForm}
+                >
                     Create Activity
                 </Button>
             </Toolbar>

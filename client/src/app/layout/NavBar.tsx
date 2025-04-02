@@ -1,12 +1,11 @@
 import { Group } from '@mui/icons-material'
 import { Box, AppBar, Toolbar,  Typography, Button, MenuItem } from '@mui/material'
-
-type Props = {
-    openForm: () => void;
-}
+import { NavLink } from 'react-router'
+import MenuItemLink from '../shared/components/MenuItemLink'
 
 
-export default function NavBar({openForm}: Props) {
+
+export default function NavBar() {
     return (
         
         <Box sx={{ flexGrow: 1 }}>
@@ -17,53 +16,20 @@ export default function NavBar({openForm}: Props) {
             borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
         }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Group fontSize='large' sx={{ color: '#ff6f61' }} />
+                <Box component={NavLink} to='/' sx={{ display: 'flex', alignItems: 'center', gap: 2,  textDecoration: "none", "&:hover": { textDecoration: "none" }, "&:focus": { textDecoration: "none" }}}>
+                    <Group  fontSize='large' sx={{ color: '#ff6f61' }} />
                     <Typography variant='h4' fontWeight='bold' sx={{ color: '#ffffff', letterSpacing: '1px' }}>
                         ReactiveHub
                     </Typography>
                 </Box>
 
                 <Box sx={{ display: 'flex', gap: 3 }}>
-                    <MenuItem sx={{
-                        fontSize: '1.1rem',
-                        textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        padding: 0,
-                        transition: '0.3s',
-                        '&:hover': {
-                            color: '#ff6f61'
-                        }
-                    }}>
+                    <MenuItemLink  to='/activities'>
                         Activities
-                    </MenuItem>
-                    <MenuItem sx={{
-                        fontSize: '1.1rem',
-                        textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        padding: 0,
-                        transition: '0.3s',
-                        '&:hover': {
-                            color: '#ff6f61'
-                        }
-                    }}>
-                        About
-                    </MenuItem>
-                    <MenuItem sx={{
-                        fontSize: '1.1rem',
-                        textTransform: 'uppercase',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        padding: 0,
-                        transition: '0.3s',
-                        '&:hover': {
-                            color: '#ff6f61'
-                        }
-                    }}>
-                        Contact
-                    </MenuItem>
+                    </MenuItemLink>
+                    <MenuItemLink to='/createActivity' >
+                        Create Activity
+                    </MenuItemLink>
                 </Box>
 
                 <Button size='large' variant='contained' sx={{
@@ -79,9 +45,9 @@ export default function NavBar({openForm}: Props) {
                         boxShadow: '0px 6px 18px rgba(0, 0, 0, 0.3)'
                     }
                 }}
-                onClick={openForm}
+                onClick={() => {}}
                 >
-                    Create Activity
+                    User menu
                 </Button>
             </Toolbar>
         </AppBar>
